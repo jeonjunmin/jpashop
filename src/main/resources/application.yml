@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/jpashop?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://localhost:3306/jpashop?serverTimezone=Asia/Seoul  #mysql 셋팅
     username: jpashop
     password: jpashop
 
