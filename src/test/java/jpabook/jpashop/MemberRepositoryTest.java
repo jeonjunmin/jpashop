@@ -1,5 +1,6 @@
 package jpabook.jpashop;
 
+import jpabook.jpashop.domain.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 //import org.junit.runner.RunWith;
@@ -22,7 +23,7 @@ class MemberRepositoryTest {
 //    @Rollback(value = false)
     public void testMember() throws Exception {
         Member memeber = new Member();
-        memeber.setUsername("memberA");
+        memeber.setName("memberA");
 
         Long saveId = memberRepository.save(memeber);
         Member findMember = memberRepository.find(saveId);
@@ -30,7 +31,7 @@ class MemberRepositoryTest {
         System.out.println("findMember.getId() = " + findMember.getId());
 
         Assertions.assertThat(findMember.getId()).isEqualTo(memeber.getId());
-        Assertions.assertThat(findMember.getUsername()).isEqualTo(memeber.getUsername());
+        Assertions.assertThat(findMember.getName()).isEqualTo(memeber.getName());
         Assertions.assertThat(findMember).isEqualTo(memeber); //같은 ID의 Entity는 같은 객체임
 
         /*
