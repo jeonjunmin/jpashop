@@ -8,6 +8,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Getter @Setter
 public class Category {
@@ -26,7 +28,7 @@ public class Category {
     )  // item테이블과 category테이블의 컬럼인 item_id와 category_id를 FK로 갖는 조인 연결 테이블을 만들어 준다.
     private List<Item> items = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name ="parent_id")
     private Category parent;
 
