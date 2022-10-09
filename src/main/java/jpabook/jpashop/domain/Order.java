@@ -20,7 +20,7 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToMany // Member객체(member테이블)와 다:1 관계
+    @ManyToOne // Member객체(member테이블)와 다:1 관계
     @JoinColumn(name = "member_id") // Member객체(member테이블)의 member_id와 FK 설정
     private Member member;
 
