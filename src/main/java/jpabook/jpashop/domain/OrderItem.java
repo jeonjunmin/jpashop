@@ -28,4 +28,30 @@ public class OrderItem {
     private int orderPrice; //주문가격
     private int count;      //주문수량
 
+    //**생성 메서드**//
+    public static OrderItem createOrderItem(Item item, int orderPrice,int count){
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item);
+        orderItem.setOrderPrice(orderPrice);
+        orderItem.setCount(count);
+
+        item.removeStock(count);
+        return orderItem;
+    }
+
+    //**비지니스 로직**//
+    public void cancel(){
+        //재고수량을 원복한다.
+        getItem().addStock(count); //자기 클래스에 선언된 변수를 가져올때 getItem만 써도 된다. / 다른데서 해당 객체(OrderItem)가 선언되면 orderItem.addStock(count); 으로 사용 되어야 한다.
+    }
+
+    //**조회 로직**//
+
+    /**
+     * 주문상품 전체 가격 조회
+     */
+    public int getTotalPrice(){
+        return getOrderPrice() * getCount();
+    }
+
 }
